@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title %></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1><%= locals.title %></h1>
+
+    <form method="post">
+        <% locals.products.forEach(p => {%>
+            <label>
+            <input type="radio" name="type" value="<%= p.name %>"
+                <%= locals.body?.product === p.name ? 'checked' : '' %>
+            >
+            <img src="<%= p.src %>" alt="<%= p.name %>">
+        </label>
+        <%}); %>
+        <label for="name">Name: </label>
+        <input type="text" name="name" value="<%= locals.body?.name %>"> <br>
+        <label for="payAdress">Payment Adress</label>
+        <input type="text" name="payAdress" value="<%= locals.body?.payAdress %>"> <br>
+        <label for="deliveryAdress">Delivery Address</label>
+        <input type="text" name="deliveryAdress" value="<%= locals.body?.deliveryAdress %>"> <br>
+        <label for="kupon">Kupon (opcional): </label>
+        <input type="text" name="kupon" value="<%= locals.body?.kupon %>" maxlength="7"> <br>
+        <label>Payment method</label> <br>
+        <label for="cardNumber">Card Number: </label>
+        <input type="text" name="cardNumber" maxlength="19"> <br>
+        <label for="cardNumber">Experision date (HH/ÉÉ): </label>
+        <input type="text" name="cardNumber" maxlength="5"> <br>
+        <label for="cardNumber">Security code: </label>
+        <input type="password" name="cardNumber" maxlength="3"> <br>
+
+        <% if(locals.errors && locals.errors.length > 0)  {%>
+            <ul style="color: red;">
+                <% locals.errors.forEach(e => {%>
+                    <li><%= e %></li>
+                <%}); %>
+            </ul>
+        <%}%>
+
+        <button type="submit">Order</button>
+
+        <% if(locals.success)  {%>
+            <p style="color: green;">Successfully added to Database</p>
+        <%}%>
+    </form>
+</body>
+</html>
