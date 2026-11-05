@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: rgb(232, 219, 202);
     color:rgb(58, 46, 135);
@@ -5,4 +9,29 @@ body {
 
 label, input {
     margin-bottom: 10px;
+}
+
+#subTitle{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+img{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.icon{
+    margin-bottom: 10px;
+    margin-right: 5px;
+    display: block;
+    input {
+        visibility: hidden;
+    }
+    input:checked + img {
+        box-shadow: 1.5px 1.5px #888888;
+    }
+    * {
+        vertical-align: middle;
+    }
 }
